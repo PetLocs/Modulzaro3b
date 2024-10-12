@@ -14,6 +14,10 @@ public class Ember {
         this("Péter", 38);
     }
 
+    public Ember(String nev) {
+        this(nev, 38, false);
+    }
+
     public Ember(String nev, int kor) {
         this(nev, kor, false);
     }
@@ -63,20 +67,19 @@ public class Ember {
     }
 
     public boolean isIdegenNyelv() {
-        return idegenNyelv;
+        return this.idegenNyelv;
     }
 
     public String getNev() {
-        return nev;
+        return this.nev;
     }
 
     public int getKor() {
-        return kor;
+        return this.kor;
     }
 
     public void valaszol(){
         String nyelv = idegenNyelv ? "Beszélek idegen nyelvet/nyelveket: " + this.beszéltNyelvek: "Nem beszélek idegen nyelveket.";
         System.out.printf("%s vagyok, %d éves, %s%n", getNev(), getKor(), nyelv);
     }
-
 }

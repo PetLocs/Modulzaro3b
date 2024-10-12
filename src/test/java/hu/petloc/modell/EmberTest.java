@@ -3,8 +3,6 @@ package hu.petloc.modell;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class EmberTest {
 
     @BeforeEach
@@ -12,22 +10,23 @@ class EmberTest {
         tesztEsetek();
     }
 
-    private void tesztEsetek() {
+    @Test
+    void tesztEsetek() {
+        nullNev();
+        //nullKor();
+        //negativKor();
+        //ismeretlenNyelv();
     }
 
     @Test
-    void setNyelvSzam() {
+    void nullKor() {
+        Ember kortalan = new Ember("Zoli");
+        assert kortalan == null : "Nincs kor meghatározva!";
     }
 
     @Test
-    void nyelvHozzaAd() {
-    }
-
-    @Test
-    void isIdegenNyelv() {
-    }
-
-    @Test
-    void valaszol() {
+    void nullNev() {
+        Ember nevtelen = new Ember(null);
+        assert nevtelen.getNev() == null : "Nincs név meghatározva!";
     }
 }
