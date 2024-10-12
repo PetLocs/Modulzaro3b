@@ -7,5 +7,9 @@ public class Main {
         Ember elso = new Ember();
         Ember masodik = new Ember("Géza", 24, true);
         Ember harmadik = new Ember("Tina", 28);
+
+        elso.valaszol();
+        masodik.valaszol();
+        harmadik.valaszol();
     }
 }

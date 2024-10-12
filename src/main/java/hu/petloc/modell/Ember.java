@@ -7,7 +7,7 @@ public class Ember {
     private boolean idegenNyelv;
     private String nev;
     private int kor;
-    private List<String> nyelvek = new ArrayList<>();
+    private final List<String> NYELVEK = new ArrayList<>();
     private Set beszéltNyelvek;
 
     public Ember() {
@@ -31,26 +31,32 @@ public class Ember {
     }
 
     private void fillNyelvek(){
-        nyelvek.add("angol");
-        nyelvek.add("német");
-        nyelvek.add("olasz");
-        nyelvek.add("francia");
+        NYELVEK.add("angol");
+        NYELVEK.add("német");
+        NYELVEK.add("olasz");
+        NYELVEK.add("francia");
     }
     public void nyelvHozzaAd(int szam){
         if (isIdegenNyelv()){
             beszéltNyelvek = new HashSet();
             switch (szam){
                 case 0:
-                    beszéltNyelvek.add(nyelvek.get(0));
+                    beszéltNyelvek.add(NYELVEK.get(0));
                     break;
                 case 1:
-                    beszéltNyelvek.add(nyelvek.get(1));
+                    beszéltNyelvek.add(NYELVEK.get(0));
+                    beszéltNyelvek.add(NYELVEK.get(1));
                     break;
                 case 2:
-                    beszéltNyelvek.add(nyelvek.get(2));
+                    beszéltNyelvek.add(NYELVEK.get(0));
+                    beszéltNyelvek.add(NYELVEK.get(1));
+                    beszéltNyelvek.add(NYELVEK.get(2));
                     break;
                 case 3:
-                    beszéltNyelvek.add(nyelvek.get(3));
+                    beszéltNyelvek.add(NYELVEK.get(0));
+                    beszéltNyelvek.add(NYELVEK.get(1));
+                    beszéltNyelvek.add(NYELVEK.get(2));
+                    beszéltNyelvek.add(NYELVEK.get(3));
                     break;
             }
         }
@@ -66,6 +72,11 @@ public class Ember {
 
     public int getKor() {
         return kor;
+    }
+
+    public void valaszol(){
+        String nyelv = idegenNyelv ? "Beszélek idegen nyelvet/nyelveket: " + this.beszéltNyelvek: "Nem beszélek idegen nyelveket.";
+        System.out.printf("%s vagyok, %d éves, %s%n", getNev(), getKor(), nyelv);
     }
 
 }
