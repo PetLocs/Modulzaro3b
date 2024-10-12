@@ -1,9 +1,6 @@
 package hu.petloc.modell;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Ember {
 
@@ -18,14 +15,19 @@ public class Ember {
     }
 
     public Ember(String nev, int kor) {
-        this(false, nev, kor);
+        this(nev, kor, false);
     }
 
-    public Ember(boolean idNyelv, String nev, int kor) {
+    public Ember(String nev, int kor, boolean idNyelv ) {
+        this.nev = nev;
+        this.kor = kor;
         fillNyelvek();
-        setKor(kor);
-        setIdegenNyelv(idNyelv);
-        setNev(nev);
+        this.idegenNyelv = idNyelv;
+        nyelvHozzaAd(setNyelvSzam());
+    }
+
+    public int setNyelvSzam() {
+        return (int)(Math.random()*4);
     }
 
     private void fillNyelvek(){
@@ -36,6 +38,7 @@ public class Ember {
     }
     public void nyelvHozzaAd(int szam){
         if (isIdegenNyelv()){
+            beszéltNyelvek = new HashSet();
             switch (szam){
                 case 0:
                     beszéltNyelvek.add(nyelvek.get(0));
@@ -49,9 +52,6 @@ public class Ember {
                 case 3:
                     beszéltNyelvek.add(nyelvek.get(3));
                     break;
-                default:
-
-                    break;
             }
         }
     }
@@ -60,23 +60,12 @@ public class Ember {
         return idegenNyelv;
     }
 
-    public void setIdegenNyelv(boolean idegenNyelv) {
-        this.idegenNyelv = idegenNyelv;
-    }
-
     public String getNev() {
         return nev;
-    }
-
-    public void setNev(String nev) {
-        this.nev = nev;
     }
 
     public int getKor() {
         return kor;
     }
 
-    public void setKor(int kor) {
-        this.kor = kor;
-    }
 }
